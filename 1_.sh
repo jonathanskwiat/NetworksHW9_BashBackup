@@ -5,9 +5,9 @@ echo $startingDirectory
 filenameFlag="*.comp"
 function copyEncrypt () {
 	#cd "${startingDirectory}"
-	pwd
-	cp $filename ../encrypted
-	gpg --encrypt --recipient 'jonathanskwiat@gmail.com' --output confidential.txt.enc "${filename}"
+	encryptExt=".enc"
+	newFileName="$filename$encryptExt"
+	gpg --encrypt --recipient 'jonathanskwiat@gmail.com' --output "../encrypted/${newFileName}" "${filename}"
 	cp $file ../encrypted
 }
 
@@ -24,3 +24,4 @@ if [[ $file == $filenameFlag ]]; then
 	 echo "Doesn't match!"
 fi
 done
+cd $startingDirectory
