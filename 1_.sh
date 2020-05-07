@@ -1,15 +1,27 @@
 #!/bin/bash
 startingDirectory=`pwd`
-publickey=my_secret
+publicKey=${startingDirectory}/public_key.asc
 echo $startingDirectory
 filenameFlag="*.comp"
 function copyEncrypt () {
-	#cd "${startingDirectory}"
-	encryptExt=".enc"
-	newFileName="$filename$encryptExt"
-	gpg --encrypt --recipient 'jonathanskwiat@gmail.com' --output "../encrypted/${newFileName}" "${filename}"
-	cp $file ../encrypted
+	# encryptExt=".enc"
+	# newFileName="$filename$encryptExt"
+	newFileName=../encrypted/${filename}.enc
+	gpg --encrypt --recipient-file "${publicKey}" --output "${newFileName}" "${filename}"
+	if [ -s "${newFileName}" ]
+	then
+		echo "${newFileName} file has some data."
+		echo "Placing ${file} flag of completion"
+	        cp $file ../encrypted
+		echo "Removing file and flag from outbox commented out for testing!"
+		#rm "${filename}"
+		#rm "${file}"
+
+	else
+		echo "Encrypted file is empty"
+	fi
 }
+	
 
 #echo $outbox $encrypted $publickey
 cd outbox
