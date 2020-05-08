@@ -1,0 +1,5 @@
+I am not sure mutt needs this. 
+But if it does here it is.
+You are receiving a gpg encrypted message.
+Good luck decrypting it because I used my own public key.
+You don't have my secret key so your busted.
