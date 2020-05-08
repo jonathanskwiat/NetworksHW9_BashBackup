@@ -4,8 +4,6 @@ publicKey=${startingDirectory}/public_key.asc
 echo $startingDirectory
 filenameFlag="*.comp"
 function copyEncrypt () {
-	# encryptExt=".enc"
-	# newFileName="$filename$encryptExt"
 	newFileName=../encrypted/${filename}.enc
 	gpg --encrypt --recipient-file "${publicKey}" --output "${newFileName}" "${filename}"
 	if [ -s "${newFileName}" ]
@@ -13,7 +11,7 @@ function copyEncrypt () {
 		echo "${newFileName} file has some data."
 		echo "Placing ${file} flag of completion"
 	        cp $file ../encrypted
-		echo "Removing file and flag from outbox commented out for testing!"
+		echo "Removing file and flag from outbox COMMENTED OUT FOR testing!"
 		#rm "${filename}"
 		#rm "${file}"
 
@@ -21,19 +19,20 @@ function copyEncrypt () {
 		echo "Encrypted file is empty"
 	fi
 }
-	
-
-#echo $outbox $encrypted $publickey
+# Script Starts
+# Harcoded it. Didn't do outbox=$1 etc.
 cd outbox
 for file in *
 do
-if [[ $file == $filenameFlag ]]; then 
+if [[ $file == $filenameFlag ]] 
+then 
 	 echo "Matches!" $file 
 	 filename=${file%.*}
 	 echo $filename
-	 copyEncrypt
- else 
+	 copyEncrypt $filename
+else 
 	 echo "Doesn't match!"
 fi
 done
+# eraseOldFilesOutbox
 cd $startingDirectory
