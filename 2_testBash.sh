@@ -1,6 +1,6 @@
 #!/bin/bash
 declare -i SINCE_IN_SEC
-declare -1 MONTH_IN_SEC
+declare -i MONTH_IN_SEC
 MONTH_IN_SEC=2628288
 #MONTH_IN_SEC=2
 #too_old=1
