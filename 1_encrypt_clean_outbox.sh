@@ -57,9 +57,9 @@ done
 # Declare variables as integers
 declare -i since_in_sec
 declare -i month_in_sec
-#month_in_sec=2628288
+month_in_sec=2628288
 #For testing
-month_in_sec=2
+#month_in_sec=2
 
 cd ../eraseOutbox
 pwd
@@ -76,5 +76,3 @@ else
 fi
 done
 
-# eraseOldFilesOutbox
-#file_age $filename
